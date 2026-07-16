@@ -1,0 +1,302 @@
+/* ---------------------------------------------
+   Gage Barefield — Coming Soon
+   Minimalist, premium, editorial landing page
+--------------------------------------------- */
+
+:root {
+  --ivory: #F7F4ED;
+  --ink: #111111;
+  --ink-soft: #4a4a48;
+  --hairline: rgba(17, 17, 17, 0.14);
+  --hairline-strong: rgba(17, 17, 17, 0.22);
+
+  --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.page {
+  width: 100%;
+}
+
+/* ---------------------------------------------
+   Fade-up animation
+--------------------------------------------- */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  will-change: opacity, transform;
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-up--delay-1 { transition-delay: 0.1s; }
+.fade-up--delay-2 { transition-delay: 0.2s; }
+.fade-up--delay-3 { transition-delay: 0.3s; }
+.fade-up--delay-4 { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------
+   Hero
+--------------------------------------------- */
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8vh 6vw;
+}
+
+.hero__inner {
+  max-width: 640px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Monogram */
+
+.monogram {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 2.75rem;
+  object-fit: contain;
+  display: block;
+}
+
+/* Name */
+
+.name {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 6vw, 3.75rem);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+/* Tagline */
+
+.tagline {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  max-width: 480px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+}
+
+/* Divider */
+
+.divider {
+  width: 44px;
+  height: 1px;
+  background-color: var(--hairline-strong);
+  margin: 2.25rem 0;
+}
+
+.divider--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Lede paragraph */
+
+.lede {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.85;
+  color: var(--ink);
+  max-width: 500px;
+  margin-bottom: 3.25rem;
+}
+
+.lede--short {
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+}
+
+/* CTA */
+
+.cta {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ivory);
+  background-color: var(--ink);
+  padding: 1.15rem 2.75rem;
+  border: 1px solid var(--ink);
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background-color: transparent;
+  color: var(--ink);
+}
+
+.cta:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 4px;
+}
+
+/* ---------------------------------------------
+   Contact section
+--------------------------------------------- */
+
+.contact {
+  border-top: 1px solid var(--hairline);
+  padding: 10vh 6vw 8vh;
+  display: flex;
+  justify-content: center;
+}
+
+.contact__inner {
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact__heading {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.contact__list {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.contact__list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.contact__label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.contact__value {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease);
+  padding-bottom: 2px;
+}
+
+.contact__value:hover,
+.contact__value:focus-visible {
+  border-color: var(--hairline-strong);
+}
+
+.contact__footer {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+/* ---------------------------------------------
+   Responsive adjustments
+--------------------------------------------- */
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 10vh 7vw;
+  }
+
+  .monogram {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 2.25rem;
+  }
+
+  .name {
+    margin-bottom: 1.25rem;
+  }
+
+  .lede {
+    margin-bottom: 2.75rem;
+  }
+
+  .cta {
+    padding: 1rem 2.25rem;
+    width: 100%;
+  }
+
+  .contact {
+    padding: 8vh 7vw 6vh;
+  }
+
+  .contact__list {
+    gap: 1.5rem;
+    margin-bottom: 2.75rem;
+  }
+}

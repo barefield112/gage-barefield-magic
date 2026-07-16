@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gage Barefield | Coming Soon</title>
+<meta name="description" content="Gage Barefield: Premium close-up magic for corporate events, weddings, and private parties. New website coming soon." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+<meta name="theme-color" content="#F7F4ED" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<main class="page">
+
+  <section class="hero">
+    <div class="hero__inner">
+
+      <img src="assets/GB Logo.png" alt="Gage Barefield monogram" class="monogram fade-up" />
+
+      <h1 class="name fade-up fade-up--delay-1">Gage Barefield</h1>
+
+      <h3 class="tagline fade-up fade-up--delay-2">
+        Engaging Magic That Makes Corporate Events, Weddings, and Private Parties Memorable.
+      </h3>
+
+      <div class="divider fade-up fade-up--delay-2" aria-hidden="true"></div>
+
+      <p class="lede lede--short fade-up fade-up--delay-3">A new website is coming soon.</p>
+
+      <p class="lede fade-up fade-up--delay-3">
+        Now booking corporate events, weddings, and private parties throughout the Knoxville area.
+        I'd love to help create an unforgettable experience for your guests.
+      </p>
+
+      <a href="#contact" class="cta fade-up fade-up--delay-4">Inquire About an Event</a>
+
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact__inner">
+      <h2 class="contact__heading fade-up">Ready to Make Your Event Memorable?</h2>
+      <div class="divider divider--center fade-up" aria-hidden="true"></div>
+
+      <ul class="contact__list fade-up fade-up--delay-1">
+        <li>
+          <span class="contact__label">Email</span>
+          <a href="mailto:gagebarefield12@gmail.com" class="contact__value">gagebarefield12@gmail.com</a>
+        </li>
+        <li>
+          <span class="contact__label">Phone</span>
+          <a href="tel:+17852802756" class="contact__value">(785) 280-2756</a>
+        </li>
+      </ul>
+
+      <p class="contact__footer fade-up fade-up--delay-2">&copy; 2026 Gage Barefield. All rights reserved.</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+</script>
+
+</body>
+</html>
