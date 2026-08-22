@@ -4,8 +4,8 @@
 --------------------------------------------- */
 
 :root {
-  --ivory: #F7F4ED;
-  --ivory-soft: #F1ECE1;
+  --ivory: #FBFAF7;
+  --ivory-soft: #F5F3EE;
   --ink: #111111;
   --ink-soft: #4a4a48;
   --hairline: rgba(17, 17, 17, 0.14);
@@ -178,7 +178,7 @@ a {
 .btn--ghost-on-dark {
   color: var(--ivory);
   background-color: transparent;
-  border-color: rgba(247, 244, 237, 0.45);
+  border-color: rgba(251, 250, 247, 0.45);
 }
 
 .btn--ghost-on-dark:hover,
@@ -338,7 +338,7 @@ a {
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  background-color: rgba(247, 244, 237, 0.88);
+  background-color: rgba(251, 250, 247, 0.88);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
@@ -700,7 +700,7 @@ a {
 
 .hero--image .hero__subtitle,
 .page-hero--image .page-hero__text {
-  color: rgba(247, 244, 237, 0.8);
+  color: rgba(251, 250, 247, 0.8);
 }
 
 /* ---------------------------------------------
@@ -1084,7 +1084,7 @@ a {
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.8;
-  color: rgba(247, 244, 237, 0.75);
+  color: rgba(251, 250, 247, 0.75);
   margin-top: 1.25rem;
   max-width: 460px;
   margin-left: auto;
