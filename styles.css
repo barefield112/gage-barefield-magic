@@ -321,6 +321,12 @@ a {
   display: block;
 }
 
+.avatar:has(.avatar__photo) {
+  opacity: 1;
+  border-style: solid;
+  border-color: var(--hairline);
+}
+
 /* ---------------------------------------------
    Site Navigation
 --------------------------------------------- */
