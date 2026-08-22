@@ -175,6 +175,19 @@ a {
   color: var(--ivory);
 }
 
+.btn--ghost-on-dark {
+  color: var(--ivory);
+  background-color: transparent;
+  border-color: rgba(247, 244, 237, 0.45);
+}
+
+.btn--ghost-on-dark:hover,
+.btn--ghost-on-dark:focus-visible {
+  background-color: var(--ivory);
+  color: var(--ink);
+  border-color: var(--ivory);
+}
+
 .btn:focus-visible {
   outline: 1px solid currentColor;
   outline-offset: 4px;
@@ -236,6 +249,76 @@ a {
     transform: none;
     transition: none;
   }
+}
+
+/* ---------------------------------------------
+   Image slots
+   Reserved space for photos not added yet.
+   Drop an <img class="image-slot__photo"> inside
+   (before the __label span, which can then be
+   deleted) to fill the slot with a real image.
+--------------------------------------------- */
+
+.image-slot {
+  position: relative;
+  width: 100%;
+  background-color: var(--ivory-soft);
+  border: 1px dashed var(--hairline-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image-slot__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-slot--portrait { aspect-ratio: 4 / 5; }
+.image-slot--landscape { aspect-ratio: 16 / 10; }
+.image-slot--square { aspect-ratio: 1 / 1; }
+
+.image-slot__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ink-soft);
+  opacity: 0.5;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Small circular image slot, used for testimonial avatars */
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: var(--ivory-soft);
+  border: 1px dashed var(--hairline-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.avatar__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ---------------------------------------------
@@ -590,6 +673,54 @@ a {
   justify-content: center;
 }
 
+/* Hero / page-hero with a background photo */
+
+.hero--image,
+.page-hero--image {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  isolation: isolate;
+}
+
+.hero--image {
+  background-image: url('assets/home-hero.webp');
+}
+
+.hero--image::before,
+.page-hero--image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(17, 17, 17, 0.55) 0%, rgba(17, 17, 17, 0.8) 100%);
+}
+
+.hero--image .hero__inner,
+.page-hero--image .page-hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hero--image .name,
+.hero--image .lede,
+.page-hero--image .page-hero__title {
+  color: var(--ivory);
+}
+
+.hero--image .tagline,
+.page-hero--image .page-hero__text {
+  color: rgba(247, 244, 237, 0.8);
+}
+
+.hero--image .divider {
+  background-color: rgba(247, 244, 237, 0.4);
+}
+
+.hero--image .monogram {
+  filter: brightness(0) invert(1);
+}
+
 /* ---------------------------------------------
    Page Hero (inner pages)
 --------------------------------------------- */
@@ -700,15 +831,30 @@ a {
 
 .service-card {
   background-color: var(--ivory);
-  padding: 3.5rem 3rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  text-decoration: none;
   transition: background-color 0.4s var(--ease);
 }
 
 .service-card:hover {
   background-color: var(--ivory-soft);
+}
+
+.service-card__image {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-radius: 0;
+}
+
+.service-card__body {
+  padding: 2.5rem 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .service-card__title {
@@ -750,6 +896,26 @@ a {
 
 .description__text + .description__text {
   margin-top: 1.5rem;
+}
+
+/* Two-column media + copy layout (About page, service page descriptions) */
+
+.media-copy {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.media-copy__copy .section-head {
+  margin-bottom: 2rem;
+}
+
+.media-copy__copy .description__text {
+  text-align: left;
+  font-size: 1rem;
 }
 
 .benefits-grid {
@@ -840,6 +1006,9 @@ a {
   margin-top: 1.75rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--hairline);
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
 }
 
 .testimonial-card__name {
@@ -1157,9 +1326,15 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .contact-layout {
+  .contact-layout,
+  .media-copy {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 2.5rem;
+  }
+
+  .media-copy__media {
+    max-width: 420px;
+    margin: 0 auto;
   }
 
   .site-footer__inner {
