@@ -85,10 +85,40 @@
     });
   }
 
+  /* "Read more" toggle for testimonial quotes that overflow their clamp */
+  function initTestimonials() {
+    var cards = document.querySelectorAll('.testimonial-card');
+    if (!cards.length) return;
+
+    function setup() {
+      cards.forEach(function (card) {
+        var quote = card.querySelector('.testimonial-card__quote');
+        var toggle = card.querySelector('.testimonial-card__toggle');
+        if (!quote || !toggle) return;
+
+        if (quote.scrollHeight > quote.clientHeight + 2) {
+          toggle.hidden = false;
+        }
+
+        toggle.addEventListener('click', function () {
+          var expanded = quote.classList.toggle('is-expanded');
+          toggle.textContent = expanded ? 'Read Less' : 'Read More';
+        });
+      });
+    }
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(setup);
+    } else {
+      setup();
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initFadeUp();
     initNavScrollState();
     initMobileNav();
     initDropdown();
+    initTestimonials();
   });
 })();

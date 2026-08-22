@@ -967,6 +967,13 @@ a {
   flex-direction: column;
 }
 
+.testimonial-card__stars {
+  display: flex;
+  gap: 0.3rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
 .testimonial-card__mark {
   font-family: var(--font-serif);
   font-size: 2.75rem;
@@ -982,6 +989,39 @@ a {
   line-height: 1.65;
   color: var(--ink);
   flex-grow: 1;
+  max-height: 8.7em;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease);
+}
+
+.testimonial-card__quote.is-expanded {
+  max-height: 60em;
+}
+
+.testimonial-card__toggle {
+  align-self: flex-start;
+  margin-top: 0.85rem;
+  padding: 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: border-color 0.3s var(--ease);
+}
+
+.testimonial-card__toggle:hover,
+.testimonial-card__toggle:focus-visible {
+  border-color: var(--gold);
+}
+
+.testimonial-card__toggle[hidden] {
+  display: none;
 }
 
 .testimonial-card__meta {
