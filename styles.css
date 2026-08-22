@@ -670,7 +670,7 @@ a {
 .page-hero--image {
   position: relative;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   isolation: isolate;
 }
 
