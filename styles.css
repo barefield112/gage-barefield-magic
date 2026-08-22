@@ -612,57 +612,41 @@ a {
   min-height: calc(100svh - var(--nav-height));
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 8vh 6vw;
 }
 
 .hero__inner {
-  max-width: 680px;
+  max-width: 640px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
-.monogram {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 2.25rem;
-  object-fit: contain;
-  display: block;
+.hero__inner .eyebrow {
+  margin-bottom: 1.25rem;
 }
 
-.name {
+.hero__title {
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: clamp(2.4rem, 6vw, 3.75rem);
-  letter-spacing: 0.04em;
-  line-height: 1.1;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
   color: var(--ink);
   margin-bottom: 1.5rem;
-  text-transform: uppercase;
 }
 
-.tagline {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  color: var(--ink-soft);
-  max-width: 480px;
-  line-height: 1.7;
-  text-transform: uppercase;
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-}
-
-.lede {
+.hero__subtitle {
   font-family: var(--font-sans);
   font-weight: 300;
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
-  line-height: 1.85;
-  color: var(--ink);
-  max-width: 520px;
-  margin-bottom: 3rem;
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  line-height: 1.8;
+  color: var(--ink-soft);
+  max-width: 480px;
+  margin-bottom: 2.75rem;
 }
 
 .hero__actions {
@@ -670,7 +654,7 @@ a {
   align-items: center;
   gap: 1.25rem;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* Hero / page-hero with a background photo */
@@ -702,23 +686,14 @@ a {
   z-index: 1;
 }
 
-.hero--image .name,
-.hero--image .lede,
+.hero--image .hero__title,
 .page-hero--image .page-hero__title {
   color: var(--ivory);
 }
 
-.hero--image .tagline,
+.hero--image .hero__subtitle,
 .page-hero--image .page-hero__text {
   color: rgba(247, 244, 237, 0.8);
-}
-
-.hero--image .divider {
-  background-color: rgba(247, 244, 237, 0.4);
-}
-
-.hero--image .monogram {
-  filter: brightness(0) invert(1);
 }
 
 /* ---------------------------------------------
@@ -1375,18 +1350,12 @@ a {
     padding: 10vh 7vw;
   }
 
-  .monogram {
-    width: 52px;
-    height: 52px;
-    margin-bottom: 2.25rem;
-  }
-
-  .name {
+  .hero__title {
     margin-bottom: 1.25rem;
   }
 
-  .lede {
-    margin-bottom: 2.75rem;
+  .hero__subtitle {
+    margin-bottom: 2.25rem;
   }
 
   .hero__actions,
