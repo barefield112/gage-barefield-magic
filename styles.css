@@ -627,6 +627,7 @@ a {
 
 .hero__inner .eyebrow {
   margin-bottom: 1.25rem;
+  color: var(--ivory);
 }
 
 .hero__title {
