@@ -90,7 +90,7 @@ a {
 
 .section-head {
   max-width: 640px;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 
 .section-head--center {
@@ -618,7 +618,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 8vh 6vw;
+  padding: 10vh 7vw;
 }
 
 .hero__inner {
@@ -755,7 +755,7 @@ a {
 --------------------------------------------- */
 
 .page-hero {
-  padding: 9vh 6vw 7vh;
+  padding: 12vh 6vw 10vh;
   border-bottom: 1px solid var(--hairline);
   display: flex;
   justify-content: center;
@@ -792,7 +792,7 @@ a {
 --------------------------------------------- */
 
 .section {
-  padding: 9vh 6vw;
+  padding: 12vh 6vw;
 }
 
 .section--bordered {
@@ -800,7 +800,7 @@ a {
 }
 
 .section--tight {
-  padding: 6vh 6vw;
+  padding: 8vh 6vw;
 }
 
 /* ---------------------------------------------
@@ -810,7 +810,7 @@ a {
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  gap: 3.5rem;
   max-width: var(--container);
   margin: 0 auto;
 }
@@ -879,7 +879,7 @@ a {
 }
 
 .service-card__body {
-  padding: 2.5rem 3rem 3rem;
+  padding: 3rem 3.25rem 3.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -932,7 +932,7 @@ a {
 .media-copy {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
-  gap: 4rem;
+  gap: 4.5rem;
   align-items: center;
   max-width: var(--container);
   margin: 0 auto;
@@ -950,7 +950,7 @@ a {
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem 3rem;
+  gap: 3rem 3.5rem;
   max-width: 880px;
   margin: 0 auto;
 }
@@ -1000,14 +1000,14 @@ a {
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
+  gap: 3rem;
   max-width: var(--container);
   margin: 0 auto;
 }
 
 .testimonial-card {
   text-align: left;
-  padding: 2.5rem 2rem;
+  padding: 3rem 2.25rem;
   border: 1px solid var(--hairline);
   background-color: var(--ivory-soft);
   display: flex;
@@ -1104,7 +1104,7 @@ a {
 .cta-banner {
   background-color: var(--ink);
   color: var(--ivory);
-  padding: 9vh 6vw;
+  padding: 12vh 6vw;
   text-align: center;
 }
 
@@ -1152,7 +1152,7 @@ a {
 
 .site-footer {
   border-top: 1px solid var(--hairline);
-  padding: 8vh 6vw 3rem;
+  padding: 11vh 6vw 3.5rem;
 }
 
 .site-footer__inner {
@@ -1245,7 +1245,7 @@ a {
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
-  gap: 5rem;
+  gap: 5.5rem;
   max-width: var(--container);
   margin: 0 auto;
 }
@@ -1440,10 +1440,6 @@ a {
     font-size: 1rem;
   }
 
-  .hero {
-    padding: 10vh 7vw;
-  }
-
   .hero__title {
     margin-bottom: 1.25rem;
   }
@@ -1464,8 +1460,8 @@ a {
     text-align: center;
   }
 
-  .service-card {
-    padding: 2.75rem 1.75rem;
+  .service-card__body {
+    padding: 2.75rem 2rem 3rem;
   }
 
   .form__row {
