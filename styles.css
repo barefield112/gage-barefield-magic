@@ -1000,11 +1000,57 @@ a {
 
 .testimonial-card {
   text-align: left;
-  padding: 3rem 2.25rem;
-  border: 1px solid var(--hairline);
-  background-color: var(--ivory-soft);
   display: flex;
   flex-direction: column;
+}
+
+.testimonial-card__person {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.testimonial-card__name {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.testimonial-card__role {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 0.25rem;
+}
+
+/* Speech-bubble body, squared off with a small tail pointing up at the
+   avatar/name above it. */
+.testimonial-card__bubble {
+  position: relative;
+  margin-top: 1.5rem;
+  padding: 2rem 2rem 1.75rem;
+  background-color: var(--ivory-soft);
+  border: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.testimonial-card__bubble::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 16px;
+  width: 14px;
+  height: 14px;
+  background-color: var(--ivory-soft);
+  border-left: 1px solid var(--hairline);
+  border-top: 1px solid var(--hairline);
+  transform: rotate(45deg);
 }
 
 .testimonial-card__stars {
@@ -1012,14 +1058,6 @@ a {
   gap: 0.3rem;
   color: var(--gold);
   margin-bottom: 1rem;
-}
-
-.testimonial-card__mark {
-  font-family: var(--font-serif);
-  font-size: 2.75rem;
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 0.75rem;
 }
 
 .testimonial-card__quote {
@@ -1062,32 +1100,6 @@ a {
 
 .testimonial-card__toggle[hidden] {
   display: none;
-}
-
-.testimonial-card__meta {
-  margin-top: 1.75rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--hairline);
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-}
-
-.testimonial-card__name {
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--ink);
-}
-
-.testimonial-card__role {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-top: 0.25rem;
 }
 
 /* ---------------------------------------------
