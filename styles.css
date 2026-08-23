@@ -708,9 +708,10 @@ a {
 }
 
 @keyframes heroSlideshow {
-  0%, 100% { opacity: 0; }
-  1.7%, 30% { opacity: 1; }
-  31.7% { opacity: 0; }
+  0% { opacity: 0; }
+  1.67% { opacity: 1; }
+  31.67% { opacity: 1; }
+  33.33%, 100% { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
