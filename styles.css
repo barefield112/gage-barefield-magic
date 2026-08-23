@@ -673,8 +673,55 @@ a {
   isolation: isolate;
 }
 
-.hero--image {
+/* Home hero background slideshow — crossfades between three images.
+   All three currently point at the same photo; swap the url()s below
+   whenever additional photos are ready. */
+.hero__slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: top;
+  opacity: 0;
+  animation: heroSlideshow 18s infinite;
+}
+
+.hero__slide--1 {
   background-image: url('assets/home-hero.webp');
+  animation-delay: 0s;
+}
+
+.hero__slide--2 {
+  background-image: url('assets/home-hero.webp');
+  animation-delay: 6s;
+}
+
+.hero__slide--3 {
+  background-image: url('assets/home-hero.webp');
+  animation-delay: 12s;
+}
+
+@keyframes heroSlideshow {
+  0%, 100% { opacity: 0; }
+  8%, 25% { opacity: 1; }
+  33% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__slide {
+    animation: none;
+    opacity: 0;
+  }
+
+  .hero__slide--1 {
+    opacity: 1;
+  }
 }
 
 .hero--image::before,
@@ -682,14 +729,14 @@ a {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   background: linear-gradient(180deg, rgba(17, 17, 17, 0.55) 0%, rgba(17, 17, 17, 0.8) 100%);
 }
 
 .hero--image .hero__inner,
 .page-hero--image .page-hero__inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero--image .hero__title,

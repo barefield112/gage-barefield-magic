@@ -67,8 +67,14 @@
 <main class="page">
 
   <!-- Hero -->
-  <!-- Background photo: assets/home-hero.webp — replace by swapping the url() in .hero--image (styles.css) -->
+  <!-- Background slideshow: three crossfading photos, all set to assets/home-hero.webp for now.
+       Swap the url()s on .hero__slide--1/2/3 in styles.css to bring in real variety. -->
   <section class="hero hero--image">
+    <div class="hero__slideshow" aria-hidden="true">
+      <div class="hero__slide hero__slide--1"></div>
+      <div class="hero__slide hero__slide--2"></div>
+      <div class="hero__slide hero__slide--3"></div>
+    </div>
     <div class="hero__inner">
 
       <span class="eyebrow fade-up">Gage Barefield &middot; Knoxville Magician</span>
