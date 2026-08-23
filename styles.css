@@ -851,31 +851,24 @@ a {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
+  gap: 2.5rem;
   max-width: var(--container);
   margin: 0 auto;
-  background-color: var(--hairline);
-  border: 1px solid var(--hairline);
 }
 
 .service-card {
   background-color: var(--ivory);
+  border: 1px solid var(--hairline);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-decoration: none;
-  transition: background-color 0.4s var(--ease);
+  transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease);
 }
 
 .service-card:hover {
   background-color: var(--ivory-soft);
-}
-
-.service-card__image {
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  border-radius: 0;
+  border-color: var(--hairline-strong);
 }
 
 .service-card__body {
