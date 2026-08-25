@@ -1250,6 +1250,7 @@ a {
   font-family: var(--font-sans);
   font-size: 0.7rem;
   letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--ink-soft);
   opacity: 0.7;
 }
