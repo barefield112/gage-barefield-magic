@@ -904,6 +904,7 @@ a {
 }
 
 .service-card {
+  position: relative;
   background-color: var(--ivory);
   border: 1px solid var(--hairline);
   border-radius: 14px;
