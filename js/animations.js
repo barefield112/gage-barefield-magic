@@ -114,11 +114,33 @@
     }
   }
 
+  /* Buttons fill outward from wherever the cursor enters, via
+     --fill-x/--fill-y read by the ::before circle in styles.css */
+  function initButtonFill() {
+    var targets = document.querySelectorAll('.btn, .site-nav__cta');
+    if (!targets.length) return;
+
+    targets.forEach(function (el) {
+      el.addEventListener('mouseenter', function (e) {
+        var rect = el.getBoundingClientRect();
+        el.style.setProperty('--fill-x', (e.clientX - rect.left) + 'px');
+        el.style.setProperty('--fill-y', (e.clientY - rect.top) + 'px');
+      });
+
+      el.addEventListener('focus', function () {
+        if (el.style.getPropertyValue('--fill-x')) return;
+        el.style.setProperty('--fill-x', '50%');
+        el.style.setProperty('--fill-y', '50%');
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initFadeUp();
     initNavScrollState();
     initMobileNav();
     initDropdown();
     initTestimonials();
+    initButtonFill();
   });
 })();

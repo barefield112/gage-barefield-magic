@@ -133,29 +133,56 @@ a {
   cursor: pointer;
   padding: 1.15rem 2.75rem;
   border: 1px solid var(--ink);
-  transition: background-color 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+
+/* Radial fill: a small circle planted at the cursor's entry point
+   (set via --fill-x/--fill-y in js/animations.js), scaled up on
+   hover/focus to sweep the button's background from that point. */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: var(--fill-y, 50%);
+  left: var(--fill-x, 50%);
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background-color: var(--fill-color, var(--ink));
+  transform: scale(0);
+  transition: transform 0.55s var(--ease);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: scale(60);
 }
 
 .btn--dark {
   color: var(--ivory);
   background-color: var(--ink);
   border-color: var(--ink);
+  --fill-color: var(--ivory);
 }
 
 .btn--dark:hover,
 .btn--dark:focus-visible {
-  background-color: transparent;
   color: var(--ink);
 }
 
 .btn--ghost {
   color: var(--ink);
   background-color: transparent;
+  --fill-color: var(--ink);
 }
 
 .btn--ghost:hover,
 .btn--ghost:focus-visible {
-  background-color: var(--ink);
   color: var(--ivory);
 }
 
@@ -163,11 +190,11 @@ a {
   color: var(--ink);
   background-color: var(--ivory);
   border-color: var(--ivory);
+  --fill-color: var(--ink);
 }
 
 .btn--on-dark:hover,
 .btn--on-dark:focus-visible {
-  background-color: transparent;
   color: var(--ivory);
 }
 
@@ -175,11 +202,11 @@ a {
   color: var(--ivory);
   background-color: transparent;
   border-color: rgba(255, 255, 255, 0.45);
+  --fill-color: var(--ivory);
 }
 
 .btn--ghost-on-dark:hover,
 .btn--ghost-on-dark:focus-visible {
-  background-color: var(--ivory);
   color: var(--ink);
   border-color: var(--ivory);
 }
@@ -502,12 +529,36 @@ a {
   background-color: var(--ink);
   padding: 0.8rem 1.6rem;
   border: 1px solid var(--ink);
-  transition: background-color 0.35s var(--ease), color 0.35s var(--ease);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.35s var(--ease);
+  --fill-color: var(--ivory);
+}
+
+.site-nav__cta::before {
+  content: '';
+  position: absolute;
+  top: var(--fill-y, 50%);
+  left: var(--fill-x, 50%);
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background-color: var(--fill-color);
+  transform: scale(0);
+  transition: transform 0.5s var(--ease);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.site-nav__cta:hover::before,
+.site-nav__cta:focus-visible::before {
+  transform: scale(60);
 }
 
 .site-nav__cta:hover,
 .site-nav__cta:focus-visible {
-  background-color: transparent;
   color: var(--ink);
 }
 
