@@ -87,7 +87,7 @@ a {
 
 .section-head {
   max-width: 640px;
-  margin-bottom: 5rem;
+  margin-bottom: 6rem;
 }
 
 .section-head--center {
@@ -615,7 +615,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 10vh 7vw;
+  padding: 13vh 7vw;
 }
 
 .hero__inner {
@@ -752,7 +752,7 @@ a {
 --------------------------------------------- */
 
 .page-hero {
-  padding: 12vh 6vw 10vh;
+  padding: 15vh 6vw 13vh;
   border-bottom: 1px solid var(--hairline);
   display: flex;
   justify-content: center;
@@ -788,7 +788,7 @@ a {
 --------------------------------------------- */
 
 .section {
-  padding: 12vh 6vw;
+  padding: 16vh 6vw;
 }
 
 .section--bordered {
@@ -796,7 +796,7 @@ a {
 }
 
 .section--tight {
-  padding: 8vh 6vw;
+  padding: 11vh 6vw;
 }
 
 /* ---------------------------------------------
@@ -1103,7 +1103,7 @@ a {
 .cta-banner {
   background-color: var(--ink);
   color: var(--ivory);
-  padding: 12vh 6vw;
+  padding: 16vh 6vw;
   text-align: center;
 }
 
@@ -1150,7 +1150,7 @@ a {
 
 .site-footer {
   border-top: 1px solid var(--hairline);
-  padding: 11vh 6vw 3.5rem;
+  padding: 14vh 6vw 4rem;
 }
 
 .site-footer__inner {
