@@ -921,44 +921,26 @@ a {
   box-shadow: 0 18px 34px rgba(17, 17, 17, 0.1);
 }
 
-/* Card "face": suit pips in the corners, photo clipped into the
-   suit shape sitting dead center. */
+/* Card top: eyebrow + title, left-aligned. */
+.service-card__top {
+  padding: 1.5rem 1.5rem 0;
+  text-align: left;
+}
+
+/* Card face: photo clipped into the suit shape, filling most of the
+   card's remaining height. */
 .service-card__face {
   position: relative;
-  aspect-ratio: 3 / 3.6;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem;
-  background-color: var(--ivory-soft);
-  border-bottom: 1px solid var(--hairline);
-}
-
-.service-card__pip {
-  position: absolute;
-  font-size: 1.15rem;
-  line-height: 1;
-  color: var(--ink);
-}
-
-.service-card__pip--top {
-  top: 0.85rem;
-  left: 0.9rem;
-}
-
-.service-card__pip--bottom {
-  bottom: 0.85rem;
-  right: 0.9rem;
-  transform: rotate(180deg);
-}
-
-.service-card--red .service-card__pip {
-  color: #b3172c;
+  padding: 0.75rem;
 }
 
 .service-card__image {
   position: relative;
-  width: 66%;
+  width: 92%;
   aspect-ratio: 1 / 1;
 }
 
@@ -974,12 +956,11 @@ a {
 .service-card__photo--club { clip-path: url(#suit-club); }
 .service-card__photo--spade { clip-path: url(#suit-spade); }
 
-.service-card__body {
-  padding: 1.75rem 1.5rem 2rem;
+/* Card bottom: Learn More link, right-aligned. */
+.service-card__bottom {
+  padding: 0 1.5rem 1.5rem;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
+  justify-content: flex-end;
 }
 
 /* Fanned-hand entrance: cards start stacked near the row's center,
@@ -1031,16 +1012,6 @@ a {
   font-size: clamp(1.1rem, 1.6vw, 1.3rem);
   letter-spacing: -0.01em;
   margin-top: 1rem;
-}
-
-.service-card__text {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 0.88rem;
-  line-height: 1.7;
-  color: var(--ink-soft);
-  margin-top: 0.75rem;
-  margin-bottom: 1.5rem;
 }
 
 /* ---------------------------------------------
