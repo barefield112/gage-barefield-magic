@@ -10,6 +10,7 @@
   --hairline: rgba(17, 17, 17, 0.14);
   --hairline-strong: rgba(17, 17, 17, 0.22);
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Times New Roman', serif;
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --container: 1140px;
@@ -371,10 +372,11 @@ a {
 }
 
 .site-nav__word {
-  font-family: var(--font-sans);
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-weight: 500;
   font-size: 1.15rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ink);
   white-space: nowrap;
 }
