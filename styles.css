@@ -897,8 +897,8 @@ a {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
   max-width: var(--container);
   margin: 0 auto;
 }
@@ -906,30 +906,129 @@ a {
 .service-card {
   background-color: var(--ivory);
   border: 1px solid var(--hairline);
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   text-decoration: none;
-  transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease);
+  overflow: hidden;
+  transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 
 .service-card:hover {
   background-color: var(--ivory-soft);
   border-color: var(--hairline-strong);
+  box-shadow: 0 18px 34px rgba(17, 17, 17, 0.1);
 }
 
+/* Card "face": suit pips in the corners, photo clipped into the
+   suit shape sitting dead center. */
+.service-card__face {
+  position: relative;
+  aspect-ratio: 3 / 3.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background-color: var(--ivory-soft);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.service-card__pip {
+  position: absolute;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.service-card__pip--top {
+  top: 0.85rem;
+  left: 0.9rem;
+}
+
+.service-card__pip--bottom {
+  bottom: 0.85rem;
+  right: 0.9rem;
+  transform: rotate(180deg);
+}
+
+.service-card--red .service-card__pip {
+  color: #b3172c;
+}
+
+.service-card__image {
+  position: relative;
+  width: 66%;
+  aspect-ratio: 1 / 1;
+}
+
+.service-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.service-card__photo--heart { clip-path: url(#suit-heart); }
+.service-card__photo--diamond { clip-path: url(#suit-diamond); }
+.service-card__photo--club { clip-path: url(#suit-club); }
+.service-card__photo--spade { clip-path: url(#suit-spade); }
+
 .service-card__body {
-  padding: 3rem 3.25rem 3.5rem;
+  padding: 1.75rem 1.5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
 }
 
+/* Fanned-hand entrance: cards start stacked near the row's center,
+   rotated like a hand of cards, then spread out to their grid slots
+   once the section scrolls into view (see js/animations.js, which
+   toggles .is-visible via the shared fade-up observer). */
+.services-grid .service-card {
+  opacity: 0;
+  transition: transform 1s var(--ease), opacity 0.7s var(--ease),
+    background-color 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.services-grid .service-card:nth-child(1) {
+  transform: translate(180%, 8%) rotate(-16deg);
+  transition-delay: 0s;
+}
+
+.services-grid .service-card:nth-child(2) {
+  transform: translate(58%, 3%) rotate(-7deg);
+  transition-delay: 0.08s;
+}
+
+.services-grid .service-card:nth-child(3) {
+  transform: translate(-58%, 3%) rotate(7deg);
+  transition-delay: 0.16s;
+}
+
+.services-grid .service-card:nth-child(4) {
+  transform: translate(-180%, 8%) rotate(16deg);
+  transition-delay: 0.24s;
+}
+
+.services-grid .service-card.is-visible {
+  opacity: 1;
+  transform: translate(0, 0) rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-grid .service-card {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+}
+
 .service-card__title {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
   letter-spacing: -0.01em;
   margin-top: 1rem;
 }
@@ -937,11 +1036,11 @@ a {
 .service-card__text {
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 0.95rem;
-  line-height: 1.8;
+  font-size: 0.88rem;
+  line-height: 1.7;
   color: var(--ink-soft);
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 /* ---------------------------------------------
@@ -1451,7 +1550,14 @@ a {
   }
 
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-grid .service-card:nth-child(1),
+  .services-grid .service-card:nth-child(2),
+  .services-grid .service-card:nth-child(3),
+  .services-grid .service-card:nth-child(4) {
+    transform: translateY(24px) scale(0.96);
   }
 
   .testimonials-grid {
@@ -1528,7 +1634,11 @@ a {
   }
 
   .service-card__body {
-    padding: 2.75rem 2rem 3rem;
+    padding: 1.75rem 1.5rem 2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
   }
 
   .form__row {

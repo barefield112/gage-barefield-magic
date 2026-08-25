@@ -19,6 +19,25 @@
 </head>
 <body>
 
+<!-- Suit-shaped clip paths for the playing-card service cards below.
+     objectBoundingBox units so each scales to whatever element uses it. -->
+<svg width="0" height="0" style="position: absolute;" aria-hidden="true" focusable="false">
+  <defs>
+    <clipPath id="suit-heart" clipPathUnits="objectBoundingBox">
+      <path d="M0.5,0.95 C0.5,0.95 0.05,0.55 0.05,0.28 C0.05,0.1 0.2,0 0.35,0.02 C0.45,0.04 0.5,0.14 0.5,0.2 C0.5,0.14 0.55,0.04 0.65,0.02 C0.8,0 0.95,0.1 0.95,0.28 C0.95,0.55 0.5,0.95 0.5,0.95 Z" />
+    </clipPath>
+    <clipPath id="suit-diamond" clipPathUnits="objectBoundingBox">
+      <path d="M0.5,0 L0.92,0.5 L0.5,1 L0.08,0.5 Z" />
+    </clipPath>
+    <clipPath id="suit-club" clipPathUnits="objectBoundingBox">
+      <path d="M0.5,0.05 C0.65,0.05 0.76,0.17 0.76,0.3 C0.76,0.37 0.73,0.43 0.69,0.47 C0.83,0.44 0.97,0.53 0.97,0.67 C0.97,0.81 0.84,0.9 0.71,0.88 C0.62,0.87 0.55,0.82 0.51,0.75 C0.5,0.85 0.55,0.94 0.63,1 L0.37,1 C0.45,0.94 0.5,0.85 0.49,0.75 C0.45,0.82 0.38,0.87 0.29,0.88 C0.16,0.9 0.03,0.81 0.03,0.67 C0.03,0.53 0.17,0.44 0.31,0.47 C0.27,0.43 0.24,0.37 0.24,0.3 C0.24,0.17 0.35,0.05 0.5,0.05 Z" />
+    </clipPath>
+    <clipPath id="suit-spade" clipPathUnits="objectBoundingBox">
+      <path d="M0.5,0.02 C0.25,0.25 0.03,0.45 0.03,0.62 C0.03,0.82 0.2,0.9 0.38,0.82 C0.44,0.79 0.48,0.75 0.49,0.68 C0.47,0.82 0.38,0.95 0.22,1 L0.78,1 C0.62,0.95 0.53,0.82 0.51,0.68 C0.52,0.75 0.56,0.79 0.62,0.82 C0.8,0.9 0.97,0.82 0.97,0.62 C0.97,0.45 0.75,0.25 0.5,0.02 Z" />
+    </clipPath>
+  </defs>
+</svg>
+
 <header class="site-nav" id="site-nav">
   <div class="site-nav__inner">
     <a href="index.html" class="site-nav__logo">
@@ -145,11 +164,15 @@
         <h2 class="section-head__title">Four Ways to Bring Magic to Your Event</h2>
       </div>
 
-      <div class="services-grid fade-up fade-up--delay-1">
-        <a href="walk-around-magic.html" class="service-card">
-          <!-- Placeholder photo: replace src with a walk-around magic image -->
-          <div class="image-slot image-slot--landscape service-card__image">
-            <img class="image-slot__photo" src="assets/home-hero.webp" alt="Placeholder: replace with a walk-around magic photo" />
+      <div class="services-grid">
+        <a href="walk-around-magic.html" class="service-card fade-up">
+          <div class="service-card__face">
+            <span class="service-card__pip service-card__pip--top" aria-hidden="true">&spades;</span>
+            <div class="service-card__image">
+              <!-- Placeholder photo: replace src with a walk-around magic image -->
+              <img class="service-card__photo service-card__photo--spade" src="assets/home-hero.webp" alt="Placeholder: replace with a walk-around magic photo" />
+            </div>
+            <span class="service-card__pip service-card__pip--bottom" aria-hidden="true">&spades;</span>
           </div>
           <div class="service-card__body">
             <span class="eyebrow">Close-Up / Walk-Around Magic</span>
@@ -164,9 +187,13 @@
             </span>
           </div>
         </a>
-        <a href="wedding-cocktail-hour.html" class="service-card">
-          <div class="image-slot image-slot--landscape service-card__image">
-            <img class="image-slot__photo" src="assets/wedding.jpg" alt="Bride and groom embracing outdoors" style="object-position: center 22%;" />
+        <a href="wedding-cocktail-hour.html" class="service-card service-card--red fade-up">
+          <div class="service-card__face">
+            <span class="service-card__pip service-card__pip--top" aria-hidden="true">&hearts;</span>
+            <div class="service-card__image">
+              <img class="service-card__photo service-card__photo--heart" src="assets/wedding.jpg" alt="Bride and groom embracing outdoors" />
+            </div>
+            <span class="service-card__pip service-card__pip--bottom" aria-hidden="true">&hearts;</span>
           </div>
           <div class="service-card__body">
             <span class="eyebrow">Wedding &amp; Cocktail Hour Magic</span>
@@ -181,10 +208,14 @@
             </span>
           </div>
         </a>
-        <a href="corporate-events.html" class="service-card">
-          <!-- Placeholder photo: replace src with a corporate event magic image -->
-          <div class="image-slot image-slot--landscape service-card__image">
-            <img class="image-slot__photo" src="assets/home-hero.webp" alt="Placeholder: replace with a corporate event photo" />
+        <a href="corporate-events.html" class="service-card service-card--red fade-up">
+          <div class="service-card__face">
+            <span class="service-card__pip service-card__pip--top" aria-hidden="true">&diams;</span>
+            <div class="service-card__image">
+              <!-- Placeholder photo: replace src with a corporate event magic image -->
+              <img class="service-card__photo service-card__photo--diamond" src="assets/home-hero.webp" alt="Placeholder: replace with a corporate event photo" />
+            </div>
+            <span class="service-card__pip service-card__pip--bottom" aria-hidden="true">&diams;</span>
           </div>
           <div class="service-card__body">
             <span class="eyebrow">Corporate Event Magic</span>
@@ -199,10 +230,14 @@
             </span>
           </div>
         </a>
-        <a href="private-parties.html" class="service-card">
-          <!-- Placeholder photo: replace src with a private party magic image -->
-          <div class="image-slot image-slot--landscape service-card__image">
-            <img class="image-slot__photo" src="assets/home-hero.webp" alt="Placeholder: replace with a private party photo" />
+        <a href="private-parties.html" class="service-card fade-up">
+          <div class="service-card__face">
+            <span class="service-card__pip service-card__pip--top" aria-hidden="true">&clubs;</span>
+            <div class="service-card__image">
+              <!-- Placeholder photo: replace src with a private party magic image -->
+              <img class="service-card__photo service-card__photo--club" src="assets/home-hero.webp" alt="Placeholder: replace with a private party photo" />
+            </div>
+            <span class="service-card__pip service-card__pip--bottom" aria-hidden="true">&clubs;</span>
           </div>
           <div class="service-card__body">
             <span class="eyebrow">Private Parties Magic</span>
