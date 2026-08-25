@@ -1101,13 +1101,31 @@ a {
 --------------------------------------------- */
 
 .cta-banner {
+  position: relative;
   background-color: var(--ink);
   color: var(--ivory);
   padding: 16vh 6vw;
   text-align: center;
+  isolation: isolate;
+}
+
+.cta-banner--image {
+  background-image: url('assets/home-hero.webp');
+  background-size: cover;
+  background-position: top;
+}
+
+.cta-banner--image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(17, 17, 17, 0.75) 0%, rgba(17, 17, 17, 0.88) 100%);
 }
 
 .cta-banner__inner {
+  position: relative;
+  z-index: 1;
   max-width: 620px;
   margin: 0 auto;
 }
