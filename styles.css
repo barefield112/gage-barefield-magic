@@ -52,14 +52,6 @@ a {
   color: inherit;
 }
 
-/* A tiny magic wand for a cursor on anything clickable — a small
-   nod to what this site is actually selling. */
-a,
-button,
-.testimonial-card__toggle {
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgo8bGluZSB4MT0iNyIgeTE9IjI3IiB4Mj0iMjAiIHkyPSIxNCIvPgo8cGF0aCBkPSJNMjQgNCBMMjUuNiA3LjYgTDI5LjIgOS4yIEwyNS42IDEwLjggTDI0IDE0LjQgTDIyLjQgMTAuOCBMMTguOCA5LjIgTDIyLjQgNy42IFoiLz4KPC9nPgo8ZyBmaWxsPSIjMTExMTExIiBzdHJva2U9IiMxMTExMTEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KPGxpbmUgeDE9IjciIHkxPSIyNyIgeDI9IjIwIiB5Mj0iMTQiLz4KPHBhdGggZD0iTTI0IDQgTDI1LjYgNy42IEwyOS4yIDkuMiBMMjUuNiAxMC44IEwyNCAxNC40IEwyMi40IDEwLjggTDE4LjggOS4yIEwyMi40IDcuNiBaIi8+CjwvZz4KPC9zdmc+") 24 9, pointer;
-}
-
 /* ---------------------------------------------
    Utilities
 --------------------------------------------- */
