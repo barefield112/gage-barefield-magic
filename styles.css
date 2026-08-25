@@ -924,7 +924,7 @@ a {
 /* Card top: eyebrow + title, left-aligned. */
 .service-card__top {
   padding: 1.5rem 1.5rem 0;
-  text-align: left;
+  text-align: center;
 }
 
 /* Card face: photo clipped into the suit shape, filling most of the
@@ -960,7 +960,7 @@ a {
 .service-card__bottom {
   padding: 0 1.5rem 1.5rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 /* Fanned-hand entrance: cards start stacked near the row's center,
