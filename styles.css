@@ -4,7 +4,7 @@
 --------------------------------------------- */
 :root {
   --ivory: #FFFFFF;
-  --ivory-soft: #FFFFFF;
+  --ivory-soft: #F5F5F3;
   --ink: #111111;
   --ink-soft: #4a4a48;
   --hairline: rgba(17, 17, 17, 0.14);
@@ -753,7 +753,7 @@ a {
 
 .page-hero {
   padding: 15vh 6vw 13vh;
-  border-bottom: 1px solid var(--hairline);
+  background-color: var(--ivory-soft);
   display: flex;
   justify-content: center;
   text-align: center;
@@ -791,8 +791,8 @@ a {
   padding: 16vh 6vw;
 }
 
-.section--bordered {
-  border-top: 1px solid var(--hairline);
+.section--alt {
+  background-color: var(--ivory-soft);
 }
 
 .section--tight {
@@ -1149,7 +1149,7 @@ a {
 --------------------------------------------- */
 
 .site-footer {
-  border-top: 1px solid var(--hairline);
+  background-color: var(--ivory-soft);
   padding: 14vh 6vw 4rem;
 }
 
