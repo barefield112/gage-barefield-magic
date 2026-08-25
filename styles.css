@@ -1021,7 +1021,7 @@ a {
 }
 
 .services-grid .service-card.is-visible:hover {
-  transform: rotate(4deg);
+  transform: rotate(2deg);
 }
 
 @media (prefers-reduced-motion: reduce) {
