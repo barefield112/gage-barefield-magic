@@ -898,7 +898,7 @@ a {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 1.1rem;
   max-width: var(--container);
   margin: 0 auto;
 }
