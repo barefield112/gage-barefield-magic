@@ -927,8 +927,8 @@ a {
   text-align: center;
 }
 
-/* Card face: photo clipped into the suit shape, filling most of the
-   card's remaining height. */
+/* Card face: suit pips in the corners, photo clipped into the suit
+   shape filling most of the card's remaining height. */
 .service-card__face {
   position: relative;
   flex: 1;
@@ -936,6 +936,28 @@ a {
   align-items: center;
   justify-content: center;
   padding: 0.75rem;
+}
+
+.service-card__pip {
+  position: absolute;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.service-card__pip--top {
+  top: 0.85rem;
+  left: 0.9rem;
+}
+
+.service-card__pip--bottom {
+  bottom: 0.85rem;
+  right: 0.9rem;
+  transform: rotate(180deg);
+}
+
+.service-card--red .service-card__pip {
+  color: #b3172c;
 }
 
 .service-card__image {
@@ -956,7 +978,7 @@ a {
 .service-card__photo--club { clip-path: url(#suit-club); }
 .service-card__photo--spade { clip-path: url(#suit-spade); }
 
-/* Card bottom: Learn More link, right-aligned. */
+/* Card bottom: Learn More link, centered. */
 .service-card__bottom {
   padding: 0 1.5rem 1.5rem;
   display: flex;
