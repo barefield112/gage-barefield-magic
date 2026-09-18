@@ -135,6 +135,131 @@
     });
   }
 
+  /* CTA background photo brightens in a soft radius around the cursor,
+     via --spot-x/--spot-y read by the mask-image on ::before in styles.css */
+  function initCtaSpotlight() {
+    var targets = document.querySelectorAll('.cta-banner--image');
+    if (!targets.length) return;
+
+    targets.forEach(function (el) {
+      el.addEventListener('mousemove', function (e) {
+        var rect = el.getBoundingClientRect();
+        el.style.setProperty('--spot-x', (e.clientX - rect.left) + 'px');
+        el.style.setProperty('--spot-y', (e.clientY - rect.top) + 'px');
+      });
+
+      el.addEventListener('mouseleave', function () {
+        el.style.setProperty('--spot-x', '-9999px');
+        el.style.setProperty('--spot-y', '-9999px');
+      });
+    });
+  }
+
+  /* Hero heading swipes up through each event type — a masked window with
+     a stacked track of words that slides on an interval. The first word is
+     duplicated at the end of the track so the loop back to the top can
+     swipe smoothly instead of jumping. */
+  function initHeroSwipe() {
+    var track = document.querySelector('[data-swipe]');
+    if (!track) return;
+
+    var words = track.querySelectorAll('.hero__cycle-word');
+    if (words.length < 2) return;
+
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      track.style.transition = 'none';
+      return;
+    }
+
+    var HOLD_MS = 2600;
+    var SWIPE_MS = 900;
+
+    var clone = words[0].cloneNode(true);
+    track.appendChild(clone);
+
+    var index = 0;
+    var total = words.length;
+
+    function goToNext() {
+      index++;
+      /* 1.2em per step must match .hero__cycle-word's height in styles.css */
+      track.style.transform = 'translateY(-' + (index * 1.2) + 'em)';
+
+      if (index === total) {
+        setTimeout(function () {
+          track.style.transition = 'none';
+          track.style.transform = 'translateY(0)';
+          track.offsetHeight; /* force reflow before restoring the transition */
+          track.style.transition = '';
+          index = 0;
+        }, SWIPE_MS);
+      }
+    }
+
+    setInterval(goToNext, HOLD_MS);
+  }
+
+  /* Reusable scroll parallax — drifts any [data-parallax] element a few
+     px as the page scrolls, e.g. the hero slideshow's two .hero__slide
+     layers (see the "Parallax utility" section in styles.css for the
+     markup/CSS contract). Add data-parallax to any similarly-buffered
+     element to reuse it elsewhere; tune with data-parallax-speed (0–1,
+     default 0.15) and data-parallax-max (px, default 24). */
+  function initParallax() {
+    var els = document.querySelectorAll('[data-parallax]');
+    if (!els.length) return;
+
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    var items = [];
+
+    function measure() {
+      /* Reset first so a prior scroll-driven transform doesn't get
+         baked into the measured position (getBoundingClientRect
+         reflects transforms, and transforms would otherwise compound
+         on every remeasure). */
+      els.forEach(function (el) { el.style.transform = 'none'; });
+
+      items = Array.prototype.map.call(els, function (el) {
+        var rect = el.getBoundingClientRect();
+        return {
+          el: el,
+          speed: parseFloat(el.getAttribute('data-parallax-speed')) || 0.15,
+          max: parseFloat(el.getAttribute('data-parallax-max')) || 24,
+          baseTop: rect.top + window.scrollY
+        };
+      });
+
+      update();
+    }
+
+    var ticking = false;
+
+    function update() {
+      var scrollY = window.scrollY;
+
+      items.forEach(function (item) {
+        var currentTop = item.baseTop - scrollY;
+        var offset = Math.max(-item.max, Math.min(item.max, -currentTop * item.speed));
+        item.el.style.transform = 'translate3d(0, ' + offset.toFixed(1) + 'px, 0)';
+      });
+
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    measure();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', measure);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initFadeUp();
     initNavScrollState();
@@ -142,5 +267,8 @@
     initDropdown();
     initTestimonials();
     initButtonFill();
+    initCtaSpotlight();
+    initHeroSwipe();
+    initParallax();
   });
 })();
