@@ -135,26 +135,6 @@
     });
   }
 
-  /* CTA background photo brightens in a soft radius around the cursor,
-     via --spot-x/--spot-y read by the mask-image on ::before in styles.css */
-  function initCtaSpotlight() {
-    var targets = document.querySelectorAll('.cta-banner--image');
-    if (!targets.length) return;
-
-    targets.forEach(function (el) {
-      el.addEventListener('mousemove', function (e) {
-        var rect = el.getBoundingClientRect();
-        el.style.setProperty('--spot-x', (e.clientX - rect.left) + 'px');
-        el.style.setProperty('--spot-y', (e.clientY - rect.top) + 'px');
-      });
-
-      el.addEventListener('mouseleave', function () {
-        el.style.setProperty('--spot-x', '-9999px');
-        el.style.setProperty('--spot-y', '-9999px');
-      });
-    });
-  }
-
   /* Hero heading swipes up through each event type — a masked window with
      a stacked track of words that slides on an interval. The first word is
      duplicated at the end of the track so the loop back to the top can
@@ -200,7 +180,7 @@
   }
 
   /* Reusable scroll parallax — drifts any [data-parallax] element a few
-     px as the page scrolls, e.g. the hero slideshow's two .hero__slide
+     px as the page scrolls, e.g. the hero slideshow's three .hero__slide
      layers (see the "Parallax utility" section in styles.css for the
      markup/CSS contract). Add data-parallax to any similarly-buffered
      element to reuse it elsewhere; tune with data-parallax-speed (0–1,
@@ -267,7 +247,6 @@
     initDropdown();
     initTestimonials();
     initButtonFill();
-    initCtaSpotlight();
     initHeroSwipe();
     initParallax();
   });

@@ -1,7 +1,3 @@
-/* ---------------------------------------------
-   Gage Barefield — Site Styles
-   Minimalist, premium, editorial magic-performer site
---------------------------------------------- */
 :root {
   --ivory: #FFFFFF;
   --ivory-soft: #F5F5F3;
@@ -51,10 +47,6 @@ img {
 a {
   color: inherit;
 }
-
-/* ---------------------------------------------
-   Utilities
---------------------------------------------- */
 
 .container {
   width: 100%;
@@ -126,8 +118,6 @@ a {
   margin-right: auto;
 }
 
-/* Buttons */
-
 .btn {
   display: inline-block;
   font-family: var(--font-sans);
@@ -144,9 +134,6 @@ a {
   transition: color 0.55s var(--ease), border-color 0.55s var(--ease);
 }
 
-/* Radial fill: a small circle planted at the cursor's entry point
-   (set via --fill-x/--fill-y in js/animations.js), scaled up on
-   hover/focus to sweep the button's background from that point. */
 .btn::before {
   content: '';
   position: absolute;
@@ -247,10 +234,6 @@ a {
   flex-shrink: 0;
 }
 
-/* ---------------------------------------------
-   Fade-up animation
---------------------------------------------- */
-
 .fade-up {
   opacity: 0;
   transform: translateY(36px);
@@ -278,27 +261,6 @@ a {
   }
 }
 
-/* ---------------------------------------------
-   Parallax utility (reusable)
-
-   Drop on any background/image element to give it a very slight
-   vertical drift as the page scrolls, driven by initParallax() in
-   js/animations.js:
-
-     <div class="parallax">
-       <div class="parallax__layer" data-parallax data-parallax-speed="0.15"></div>
-     </div>
-
-   - .parallax is the clipping window: size it like a normal element
-     (fixed height, aspect-ratio, or inset:0 inside a positioned parent).
-   - .parallax__layer (or any [data-parallax] element) must be larger
-     than that window — the negative inset below is the buffer the
-     drift moves within — otherwise the shift reveals an edge.
-   - data-parallax-speed (0–1, default 0.15) and data-parallax-max
-     (px, default 24) control how far it drifts; keep both small for
-     a subtle effect. Skipped entirely under prefers-reduced-motion.
---------------------------------------------- */
-
 .parallax {
   position: relative;
   overflow: hidden;
@@ -317,14 +279,6 @@ a {
   will-change: transform;
 }
 
-/* ---------------------------------------------
-   Image slots
-   Reserved space for photos not added yet.
-   Drop an <img class="image-slot__photo"> inside
-   (before the __label span, which can then be
-   deleted) to fill the slot with a real image.
---------------------------------------------- */
-
 .image-slot {
   position: relative;
   width: 100%;
@@ -336,9 +290,6 @@ a {
   overflow: hidden;
 }
 
-/* Sized as the [data-parallax] layer itself (see the Parallax utility
-   above) — .image-slot is already the relative/overflow:hidden window,
-   so the negative inset here is just that layer's drift buffer. */
 .image-slot__photo {
   position: absolute;
   inset: -4% 0;
@@ -368,8 +319,6 @@ a {
   padding: 1rem;
 }
 
-/* Small circular image slot, used for testimonial avatars */
-
 .avatar {
   width: 46px;
   height: 46px;
@@ -397,10 +346,6 @@ a {
   border-style: solid;
   border-color: var(--hairline);
 }
-
-/* ---------------------------------------------
-   Site Navigation
---------------------------------------------- */
 
 .site-nav {
   position: sticky;
@@ -650,15 +595,16 @@ a {
   left: 0;
   right: 0;
   background-color: var(--ivory);
-  border-bottom: 1px solid var(--hairline);
-  box-shadow: 0 24px 40px rgba(17, 17, 17, 0.08);
-  padding: 1rem 6vw 2rem;
+  padding: 0 6vw;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.55s var(--ease);
+  transition: max-height 0.55s var(--ease), padding 0.55s var(--ease);
 }
 
 .site-nav__mobile.is-open {
+  border-bottom: 1px solid var(--hairline);
+  box-shadow: 0 24px 40px rgba(17, 17, 17, 0.08);
+  padding: 1rem 6vw 2rem;
   max-height: 80vh;
   overflow-y: auto;
 }
@@ -701,10 +647,6 @@ a {
   padding-top: 1.1rem;
 }
 
-/* ---------------------------------------------
-   Home Hero
---------------------------------------------- */
-
 .hero {
   min-height: calc(100svh - var(--nav-height));
   display: flex;
@@ -737,9 +679,6 @@ a {
   margin-bottom: 1.5rem;
 }
 
-/* Cycling word after "Close-Up Magic For" — a masked window showing one
-   word at a time; the track swipes up to the next word on an interval,
-   driven by initHeroSwipe() in js/animations.js. */
 .hero__cycle {
   display: inline-block;
   overflow: hidden;
@@ -789,8 +728,6 @@ a {
   justify-content: flex-start;
 }
 
-/* Hero / page-hero with a background photo */
-
 .hero--image,
 .page-hero--image {
   position: relative;
@@ -799,7 +736,6 @@ a {
   isolation: isolate;
 }
 
-/* Home hero background slideshow — crossfades between two images. */
 .hero__slideshow {
   position: absolute;
   inset: 0;
@@ -807,34 +743,45 @@ a {
   overflow: hidden;
 }
 
-/* Also acts as the [data-parallax] layer for the slideshow (see the
-   Parallax utility above) — the negative top/bottom inset is its
-   drift buffer, sized to match data-parallax-max on the elements. */
 .hero__slide {
   position: absolute;
   inset: -3% 0;
   background-size: cover;
   background-position: top;
   opacity: 0;
-  animation: heroSlideshow 10s ease-in-out infinite;
+  animation: heroSlideshow 15s ease-in-out infinite;
   will-change: opacity, transform;
 }
 
 .hero__slide--1 {
-  background-image: url('assets/home-hero.webp');
+  background-image: url('assets/photos/hero-1.jpg');
+  background-position: center 20%;
   animation-delay: 0s;
 }
 
 .hero__slide--2 {
-  background-image: url('assets/ab-bday4.png');
+  background-image: url('assets/photos/hero-2.jpg');
+  background-position: center 35%;
   animation-delay: 5s;
+}
+
+.hero__slide--3 {
+  background-image: url('assets/photos/hero-3.jpg');
+  background-position: center 40%;
+  animation-delay: 10s;
+}
+
+@media (max-width: 860px) {
+  .hero__slide--1 { background-position: 74% 20%; }
+  .hero__slide--2 { background-position: 82% 35%; }
+  .hero__slide--3 { background-position: 15% 30%; }
 }
 
 @keyframes heroSlideshow {
   0% { opacity: 0; }
-  7.14% { opacity: 1; }
-  50% { opacity: 1; }
-  57.14%, 100% { opacity: 0; }
+  4.76% { opacity: 1; }
+  33.33% { opacity: 1; }
+  38.1%, 100% { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -873,10 +820,6 @@ a {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* ---------------------------------------------
-   Page Hero (inner pages)
---------------------------------------------- */
-
 .page-hero {
   padding: 15vh 6vw 13vh;
   background-color: var(--ivory-soft);
@@ -909,10 +852,6 @@ a {
   margin-right: auto;
 }
 
-/* ---------------------------------------------
-   Generic section rhythm
---------------------------------------------- */
-
 .section {
   padding: 16vh 6vw;
 }
@@ -925,13 +864,6 @@ a {
 .section--tight {
   padding: 11vh 6vw;
 }
-
-/* ---------------------------------------------
-   Angled section edges
-   The alt-background band gets a slight diagonal top/bottom
-   instead of a straight seam, via a small SVG wedge. Kept off
-   most sections so it reads as an accent, not a pattern.
---------------------------------------------- */
 
 .section--alt::before,
 .section--alt::after {
@@ -955,10 +887,6 @@ a {
   transform: scaleY(-1);
 }
 
-/* ---------------------------------------------
-   Why Gage / Feature grid
---------------------------------------------- */
-
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -969,37 +897,25 @@ a {
 
 .feature-card {
   text-align: center;
-  padding: 2.25rem 2rem;
+  padding: 0 2rem 2.25rem;
   border: 1px solid var(--hairline);
   border-radius: 14px;
+  overflow: hidden;
+  background-color: var(--ivory);
 }
 
-.feature-card__icon {
-  position: relative;
-  z-index: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 68px;
-  height: 68px;
-  margin: 0 auto;
-  border-radius: 50%;
-  color: var(--ink);
+.feature-card__media {
+  margin: 0 -2rem;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--ivory-soft);
 }
 
-/* Soft light-gray glow behind each icon instead of a hard ring. */
-.feature-card__icon::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 245, 245, 0.9) 0%, transparent 72%);
-  z-index: -1;
-}
-
-.feature-card__icon svg {
-  width: 40px;
-  height: 40px;
+.feature-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .feature-card__title {
@@ -1007,7 +923,7 @@ a {
   font-weight: 700;
   font-size: 1.45rem;
   letter-spacing: -0.01em;
-  margin-top: 1.25rem;
+  margin-top: 1.75rem;
 }
 
 .feature-card__text {
@@ -1027,10 +943,6 @@ a {
   flex-wrap: wrap;
   margin-top: 4rem;
 }
-
-/* ---------------------------------------------
-   Services grid
---------------------------------------------- */
 
 .services-grid {
   display: grid;
@@ -1058,14 +970,11 @@ a {
   box-shadow: 0 18px 34px rgba(17, 17, 17, 0.1);
 }
 
-/* Card top: eyebrow + title, left-aligned. */
 .service-card__top {
   padding: 1.5rem 1.5rem 0;
   text-align: center;
 }
 
-/* Card face: suit pips in the corners, photo clipped into the suit
-   shape filling most of the card's remaining height. */
 .service-card__face {
   position: relative;
   flex: 1;
@@ -1115,9 +1024,6 @@ a {
 .service-card__photo--club { clip-path: url(#suit-club); }
 .service-card__photo--spade { clip-path: url(#suit-spade); }
 
-/* Solid-color suit swatch, used in place of a photo until real photography
-   is ready. Black suits (spade/club) fill ink; red suits (heart/diamond)
-   fill the same red used for the card's pips. */
 .service-card__swatch {
   width: 100%;
   height: 100%;
@@ -1134,17 +1040,12 @@ a {
 .service-card__swatch--club { clip-path: url(#suit-club); }
 .service-card__swatch--spade { clip-path: url(#suit-spade); }
 
-/* Card bottom: Learn More link, centered. */
 .service-card__bottom {
   padding: 0 1.5rem 1.5rem;
   display: flex;
   justify-content: center;
 }
 
-/* Fanned-hand entrance: cards start stacked near the row's center,
-   rotated like a hand of cards, then spread out to their grid slots
-   once the section scrolls into view (see js/animations.js, which
-   toggles .is-visible via the shared fade-up observer). */
 .services-grid .service-card {
   opacity: 0;
   transition: transform 0.75s var(--ease), opacity 1s var(--ease),
@@ -1196,10 +1097,6 @@ a {
   margin-top: 1rem;
 }
 
-/* ---------------------------------------------
-   Description / Benefits (service pages)
---------------------------------------------- */
-
 .description {
   max-width: 720px;
   margin: 0 auto;
@@ -1217,8 +1114,6 @@ a {
 .description__text + .description__text {
   margin-top: 1.5rem;
 }
-
-/* Two-column media + copy layout (About page, service page descriptions) */
 
 .media-copy {
   display: grid;
@@ -1267,6 +1162,20 @@ a {
   color: var(--ivory);
 }
 
+.benefit-card__mark--suit {
+  width: auto;
+  min-width: 34px;
+  height: 34px;
+  background-color: transparent;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.benefit-card__mark--red {
+  color: #b3172c;
+}
+
 .benefit-card__title {
   font-family: var(--font-sans);
   font-weight: 700;
@@ -1286,10 +1195,6 @@ a {
 .benefit-card .link-arrow {
   margin-top: 0.9rem;
 }
-
-/* ---------------------------------------------
-   Testimonials
---------------------------------------------- */
 
 .testimonials-grid {
   display: grid;
@@ -1329,8 +1234,6 @@ a {
   margin-top: 0.25rem;
 }
 
-/* Speech-bubble body, squared off with a small tail pointing up at the
-   avatar/name above it. */
 .testimonial-card__bubble {
   position: relative;
   margin-top: 1.5rem;
@@ -1438,10 +1341,6 @@ a {
   display: none;
 }
 
-/* ---------------------------------------------
-   CTA Banner (Book Gage)
---------------------------------------------- */
-
 .cta-banner {
   position: relative;
   background-color: var(--ink);
@@ -1455,36 +1354,30 @@ a {
   overflow: hidden;
 }
 
-/* [data-parallax] layer carrying the photo — split out from the section
-   itself (rather than a plain background-image on .cta-banner--image) so
-   it can drift independently of the text/overlay above it. See the
-   Parallax utility earlier in this file. */
 .cta-banner__bg {
   position: absolute;
   inset: -4% 0;
   z-index: 0;
   width: 100%;
   height: 108%;
-  background-image: url('assets/cta-background-1.jpeg');
+  background-image: url('assets/photos/cta-home.jpg');
   background-size: cover;
-  background-position: top;
+  background-position: center 40%;
 }
 
-/* The dark overlay is masked by a small radial "spotlight" that follows the
-   cursor (--spot-x/--spot-y, set via mousemove in js/animations.js), so the
-   overlay thins out around the pointer and the photo underneath reads a
-   little brighter there. The stops ease in and out (rather than jumping
-   straight to full-strength at a fixed radius) so the edge fades out
-   gradually instead of reading as a hard ring. Off-screen by default so
-   there's no effect until the cursor actually enters the section. */
+.cta-banner__bg--landing { background-image: url('assets/photos/cta-landing.jpg'); }
+.cta-banner__bg--about { background-image: url('assets/photos/cta-about.jpg'); }
+.cta-banner__bg--walk-around { background-image: url('assets/photos/cta-walk-around.jpg'); }
+.cta-banner__bg--wedding { background-image: url('assets/photos/cta-wedding.jpg'); }
+.cta-banner__bg--private-parties { background-image: url('assets/photos/cta-private-parties.jpg'); }
+.cta-banner__bg--corporate { background-image: url('assets/photos/cta-corporate.jpg'); }
+
 .cta-banner--image::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
   background: linear-gradient(180deg, rgba(17, 17, 17, 0.75) 0%, rgba(17, 17, 17, 0.88) 100%);
-  -webkit-mask-image: radial-gradient(220px circle at var(--spot-x, -9999px) var(--spot-y, -9999px), rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0.75) 45%, rgba(0, 0, 0, 0.9) 70%, rgba(0, 0, 0, 1) 100%);
-  mask-image: radial-gradient(220px circle at var(--spot-x, -9999px) var(--spot-y, -9999px), rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0.75) 45%, rgba(0, 0, 0, 0.9) 70%, rgba(0, 0, 0, 1) 100%);
 }
 
 .cta-banner__inner {
@@ -1526,10 +1419,6 @@ a {
   flex-wrap: wrap;
 }
 
-/* ---------------------------------------------
-   Footer
---------------------------------------------- */
-
 .site-footer {
   background-color: var(--ivory-soft);
   padding: 14vh 6vw 4rem;
@@ -1543,8 +1432,6 @@ a {
   gap: 3rem;
 }
 
-/* Two-column variant for pages with a single footer link column
-   (e.g. the self-contained landing page, which drops the Explore list). */
 .site-footer__inner--compact {
   grid-template-columns: 1.4fr 1fr;
 }
@@ -1624,16 +1511,17 @@ a {
   opacity: 0.7;
 }
 
-/* ---------------------------------------------
-   Contact page
---------------------------------------------- */
-
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 5.5rem;
+  align-items: start;
   max-width: var(--container);
   margin: 0 auto;
+}
+
+.contact-intro {
+  margin-bottom: 3rem;
 }
 
 .contact-info__list {
@@ -1674,10 +1562,6 @@ a {
 .contact__value:focus-visible {
   border-color: var(--ink);
 }
-
-/* ---------------------------------------------
-   Forms (Contact + Book Now)
---------------------------------------------- */
 
 .form {
   display: flex;
@@ -1746,6 +1630,20 @@ a {
   color: rgba(74, 74, 72, 0.5);
 }
 
+.form-embed {
+  min-width: 0;
+}
+
+.form-embed--centered {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.form-embed iframe {
+  width: 100%;
+  border: 0;
+}
+
 .form__note {
   font-family: var(--font-sans);
   font-size: 0.78rem;
@@ -1758,10 +1656,6 @@ a {
   align-self: flex-start;
   margin-top: 0.5rem;
 }
-
-/* ---------------------------------------------
-   Responsive adjustments
---------------------------------------------- */
 
 @media (max-width: 900px) {
   .feature-grid {
