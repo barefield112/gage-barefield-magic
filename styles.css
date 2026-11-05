@@ -61,6 +61,7 @@ a {
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.16em;
+  line-height: 1.6;
   color: var(--ink-soft);
 }
 
@@ -297,6 +298,10 @@ a {
   height: 108%;
   object-fit: cover;
   display: block;
+}
+
+.image-slot:has(.image-slot__photo) {
+  border: none;
 }
 
 .image-slot--portrait { aspect-ratio: 4 / 5; }
@@ -696,6 +701,30 @@ a {
   display: block;
   height: 1.2em;
   line-height: 1.2;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Even out heading lines and avoid one-word last lines in body copy */
+.hero__subtitle,
+.section-head__text,
+.page-hero__text,
+.description__text,
+.feature-card__text,
+.benefit-card__text,
+.cta-banner__text,
+.contact-intro p {
+  text-wrap: pretty;
+}
+
+.section-head__title,
+.page-hero__title,
+.cta-banner__title,
+.feature-card__title,
+.benefit-card__title {
+  text-wrap: balance;
 }
 
 .sr-only {
@@ -1307,7 +1336,8 @@ a {
   line-height: 1.65;
   color: var(--ink);
   flex-grow: 1;
-  max-height: 8.7em;
+  /* Exactly 5 lines (5 x line-height) so no half-cut line peeks out */
+  max-height: 8.25em;
   overflow: hidden;
   transition: max-height 0.55s var(--ease);
 }
@@ -1725,6 +1755,68 @@ a {
 
   .site-nav__word {
     font-size: 1rem;
+  }
+
+  /* Sections already have side padding, so drop the container's second gutter */
+  .section > .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .section--tight {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .section-head {
+    margin-bottom: 3rem;
+  }
+
+  .hero {
+    padding: 4.5rem 6vw;
+  }
+
+  .page-hero {
+    padding: 5rem 6vw 4.5rem;
+  }
+
+  .page-hero__title {
+    font-size: 2.2rem;
+    line-height: 1.15;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.12em;
+  }
+
+  .cta-banner {
+    padding: 5.5rem 6vw;
+  }
+
+  .site-footer {
+    padding-top: 4.5rem;
+  }
+
+  .section-cta {
+    margin-top: 3rem;
+  }
+
+  .testimonials-grid {
+    gap: 2.5rem;
+  }
+
+  .testimonial-card__bubble {
+    padding: 1.75rem 1.5rem 1.5rem;
+  }
+
+  .contact__value {
+    font-size: 1.15rem;
+    overflow-wrap: anywhere;
   }
 
   .hero__title {
