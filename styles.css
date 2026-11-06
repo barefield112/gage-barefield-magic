@@ -1110,6 +1110,14 @@ a {
   transform: rotate(2deg);
 }
 
+/* Tablet and down: no card tilt or fly-in, just a simple fade */
+@media (max-width: 1024px) {
+  .services-grid .service-card:nth-child(n),
+  .services-grid .service-card.is-visible:hover {
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .services-grid .service-card {
     transform: none;
@@ -1396,7 +1404,7 @@ a {
 }
 
 .cta-banner__bg--landing { background-image: url('assets/photos/cta-landing.jpg'); }
-.cta-banner__bg--about { background-image: url('assets/photos/cta-about.jpg'); }
+.cta-banner__bg--about { background-image: url('assets/photos/cta-about.jpg'); background-position: 62% 45%; }
 .cta-banner__bg--walk-around { background-image: url('assets/photos/cta-walk-around.jpg'); }
 .cta-banner__bg--wedding { background-image: url('assets/photos/cta-wedding.jpg'); }
 .cta-banner__bg--private-parties { background-image: url('assets/photos/cta-private-parties.jpg'); }
@@ -1695,13 +1703,6 @@ a {
 
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .services-grid .service-card:nth-child(1),
-  .services-grid .service-card:nth-child(2),
-  .services-grid .service-card:nth-child(3),
-  .services-grid .service-card:nth-child(4) {
-    transform: translateY(24px) scale(0.96);
   }
 
   .testimonials-grid {
