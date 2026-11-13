@@ -901,6 +901,32 @@ a {
   max-width: 640px;
 }
 
+/* Sub-page hero photo: oversized layer that drifts with [data-parallax],
+   same contract as the home hero slides and .cta-banner__bg */
+.page-hero--image {
+  overflow: hidden;
+  padding-top: 20vh;
+  padding-bottom: 18vh;
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: -4% 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center 35%;
+}
+
+.page-hero__bg--about { background-image: url('assets/Images%20Used/page-hero-about.webp'); background-position: center 30%; }
+.page-hero__bg--corporate { background-image: url('assets/Images%20Used/page-hero-corporate.webp'); background-position: center 30%; }
+.page-hero__bg--private-parties { background-image: url('assets/Images%20Used/page-hero-private-parties.webp'); background-position: center 30%; }
+.page-hero__bg--walk-around { background-image: url('assets/Images%20Used/page-hero-walk-around.webp'); background-position: center 25%; }
+.page-hero__bg--wedding { background-image: url('assets/Images%20Used/page-hero-wedding.webp'); background-position: center 35%; }
+
+.page-hero--image .eyebrow {
+  color: var(--ivory);
+}
+
 .page-hero__title {
   font-family: var(--font-sans);
   font-weight: 800;
@@ -1824,6 +1850,10 @@ a {
 
   .page-hero {
     padding: 5rem 6vw 4.5rem;
+  }
+
+  .page-hero--image {
+    padding: 7rem 6vw 6.5rem;
   }
 
   .page-hero__title {
