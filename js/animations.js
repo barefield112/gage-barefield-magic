@@ -77,12 +77,18 @@
       trigger.setAttribute('aria-expanded', String(isOpen));
     });
 
+    function close() {
+      dropdown.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
     document.addEventListener('click', function (e) {
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('is-open');
-        trigger.setAttribute('aria-expanded', 'false');
-      }
+      if (!dropdown.contains(e.target)) close();
     });
+
+    /* With a mouse, leaving the menu closes it even if it was opened by a click */
+    var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+    if (canHover) dropdown.addEventListener('mouseleave', close);
   }
 
   /* "Read more" toggle for testimonial quotes that overflow their clamp */

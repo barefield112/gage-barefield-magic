@@ -245,6 +245,9 @@ a {
 .fade-up.is-visible {
   opacity: 1;
   transform: translateY(0);
+  /* Release the GPU layer once revealed; dozens of permanent layers
+     strain mobile Safari and cause flicker under the sticky nav */
+  will-change: auto;
 }
 
 .fade-up--delay-1 { transition-delay: 0.2s; }
@@ -364,6 +367,9 @@ a {
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.55s var(--ease), box-shadow 0.55s var(--ease);
+  /* Own compositing layer: stops Safari flickering the blurred bar while
+     parallax photos move underneath it */
+  transform: translateZ(0);
 }
 
 .site-nav.is-scrolled {
@@ -462,10 +468,6 @@ a {
   position: relative;
 }
 
-.site-nav__dropdown:hover .site-nav__chevron,
-.site-nav__dropdown:focus-within .site-nav__chevron {
-  transform: rotate(180deg);
-}
 
 .site-nav__dropdown-menu {
   position: absolute;
@@ -483,8 +485,32 @@ a {
   transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), visibility 0.45s;
 }
 
-.site-nav__dropdown:hover .site-nav__dropdown-menu,
-.site-nav__dropdown:focus-within .site-nav__dropdown-menu,
+/* Invisible bridge over the gap between the trigger and the menu, so the
+   hover isn't lost while the mouse travels down to the links */
+.site-nav__dropdown-menu::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: calc(1.1rem + 10px);
+}
+
+/* Open on real hover (mouse only, not sticky touch hover), on tap/click
+   via .is-open, and for keyboard users via :focus-visible. Plain
+   :focus-within kept the menu stuck open after a mouse click. */
+@media (hover: hover) {
+  .site-nav__dropdown:hover .site-nav__dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+
+  .site-nav__dropdown:hover .site-nav__chevron {
+    transform: rotate(180deg);
+  }
+}
+
 .site-nav__dropdown.is-open .site-nav__dropdown-menu {
   opacity: 1;
   visibility: visible;
@@ -492,6 +518,16 @@ a {
 }
 
 .site-nav__dropdown.is-open .site-nav__chevron {
+  transform: rotate(180deg);
+}
+
+.site-nav__dropdown:has(:focus-visible) .site-nav__dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.site-nav__dropdown:has(:focus-visible) .site-nav__chevron {
   transform: rotate(180deg);
 }
 
@@ -603,15 +639,19 @@ a {
   padding: 0 6vw;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.55s var(--ease), padding 0.55s var(--ease);
+  /* Hidden after the close animation so closed links can't be tabbed to */
+  visibility: hidden;
+  transition: max-height 0.55s var(--ease), padding 0.55s var(--ease), visibility 0s linear 0.55s;
 }
 
 .site-nav__mobile.is-open {
   border-bottom: 1px solid var(--hairline);
   box-shadow: 0 24px 40px rgba(17, 17, 17, 0.08);
   padding: 1rem 6vw 2rem;
-  max-height: 80vh;
+  max-height: calc(100svh - var(--nav-height));
   overflow-y: auto;
+  visibility: visible;
+  transition: max-height 0.55s var(--ease), padding 0.55s var(--ease), visibility 0s;
 }
 
 .site-nav__mobile-link {
